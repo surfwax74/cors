@@ -1,0 +1,16 @@
+venv/
+venv312/
+__pycache__/
+.pytest_cache/
+
+# Score cache
+cache_results/
+
+# Large generated data artifacts (regenerate with: python -m data.generate)
+signals_raw_10s.*
+signals_10min_features.csv
+synthetic_influx_500telem_fast.csv
+
+# Fast-variant artifacts (regenerate with: python -m data.generate --preset fast)
+signals_fast_raw.feather
+signals_fast_features.csv
