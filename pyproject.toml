@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cors"
+version = "0.1.0"
+description = "Correlation / anomaly detection models + train-test engine (CORS)."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+]
+
+# Heavier model families are optional so a consumer that only needs the
+# numpy-only models (e.g. RollingCorr) doesn't pull torch / scikit-learn.
+[project.optional-dependencies]
+sklearn = ["scikit-learn"]
+torch = ["torch"]
+all = ["scikit-learn", "torch", "pandas"]
+
+# Flat layout: models/, engine/, data/ are top-level import packages.
+[tool.hatch.build.targets.wheel]
+packages = ["models", "engine", "data"]
